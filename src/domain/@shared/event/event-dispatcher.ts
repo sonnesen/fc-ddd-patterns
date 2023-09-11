@@ -3,10 +3,10 @@ import EventHandlerInterface from "./event-handler.interface";
 import EventInterface from "./event.interface";
 
 export default class EventDispatcher implements EventDispatcherInterface {
-    private eventHandlers: Map<string, EventHandlerInterface[]> = new Map();
+    private _eventHandlers: Map<string, EventHandlerInterface[]> = new Map();
     
     getEventHandlers(eventName: string): EventHandlerInterface[] {
-        return this.eventHandlers.get(eventName) || [];
+        return this._eventHandlers.get(eventName) || [];
     }
 
     notify(event: EventInterface): void {
@@ -19,7 +19,7 @@ export default class EventDispatcher implements EventDispatcherInterface {
     register(eventName: string, eventHandler: EventHandlerInterface): void {
         const eventHandlers = this.getEventHandlers(eventName);
         eventHandlers.push(eventHandler);
-        this.eventHandlers.set(eventName, eventHandlers);
+        this._eventHandlers.set(eventName, eventHandlers);
     }
 
     unregister(eventName: string, eventHandler: EventHandlerInterface): void {
@@ -31,10 +31,10 @@ export default class EventDispatcher implements EventDispatcherInterface {
     }
 
     unregisterAllByEventName(eventName: string): void {
-        this.eventHandlers.delete(eventName);
+        this._eventHandlers.delete(eventName);
     }
 
     unregisterAll(): void {
-        this.eventHandlers.clear();
+        this._eventHandlers.clear();
     }
 }

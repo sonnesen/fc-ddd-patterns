@@ -63,7 +63,7 @@ describe("Product repository unit tests", () => {
 
         await productRepository.create(product);
 
-        await productRepository.delete("1");
+        await productRepository.deleteById("1");
 
         const productModel = await ProductModel.findOne({ where: { id: "1" } });
 

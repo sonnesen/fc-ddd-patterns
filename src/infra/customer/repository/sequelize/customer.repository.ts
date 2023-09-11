@@ -38,7 +38,7 @@ export default class CustomerRepository implements CustomerRepository {
         });
     }
 
-    async delete(id: string): Promise<void> {
+    async deleteById(id: string): Promise<void> {
         await CustomerModel.destroy({
             where: { id },
         });

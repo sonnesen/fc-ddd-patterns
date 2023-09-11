@@ -161,7 +161,7 @@ describe("Order repository unit tests", () => {
         const orderRepository = new OrderRepository();
         await orderRepository.create(order);
 
-        await orderRepository.delete(order.id);
+        await orderRepository.deleteById(order.id);
 
         const orderModel = await OrderModel.findOne({ 
             where: { id: order.id }, 

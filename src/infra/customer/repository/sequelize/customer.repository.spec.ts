@@ -81,7 +81,7 @@ describe("Customer repository unit tests", () => {
         customer.changeAddress(address);
         await customerRepository.create(customer);
 
-        await customerRepository.delete("1");
+        await customerRepository.deleteById("1");
 
         const customerModel = await CustomerModel.findOne({ where: { id: "1" } });
 

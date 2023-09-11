@@ -55,7 +55,7 @@ export default class OrderRepository implements OrderRepositoryInterface {
         });
     }
 
-    async delete(id: string): Promise<void> {
+    async deleteById(id: string): Promise<void> {
         await OrderModel.destroy({
             where: { id },
         });

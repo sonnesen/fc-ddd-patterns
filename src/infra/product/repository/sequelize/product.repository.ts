@@ -22,7 +22,7 @@ export default class ProductRepository implements ProductRepositoryInterface {
         });
     }
 
-    async delete(id: string): Promise<void> {
+    async deleteById(id: string): Promise<void> {
         await ProductModel.destroy({
             where: { id },
         });
