@@ -1,5 +1,6 @@
 import Entity from "../../@shared/entity/entity.abstract";
 import NotificationError from "../../@shared/notification/notification.error";
+import ProductValidatorFactory from "../factory/product.validator.factory";
 
 export default abstract class ProductInterface extends Entity {
     protected _name: string;
@@ -18,24 +19,7 @@ export default abstract class ProductInterface extends Entity {
     }
 
     protected validate(): void {
-        if (super.id.length === 0) {
-            this._notification.addError({
-                context: "product",
-                message: "Id is required"
-            });
-        }
-        if (this._name.length === 0) {
-            this._notification.addError({
-                context: "product",
-                message: "Name is required"
-            });
-        }
-        if (this._price <= 0) {
-            this._notification.addError({
-                context: "product",
-                message: "Price must be greater than zero"
-            });
-        }
+        ProductValidatorFactory.create().validate(this);
     }
 
     abstract changeName(name: string): void;
