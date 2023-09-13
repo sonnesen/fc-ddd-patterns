@@ -19,6 +19,12 @@ describe("Product unit tests", () => {
         }).toThrowError("Price must be greater than zero");
     });
 
+    it("should throw an error when id and name are empty", () => {
+        expect(() => {
+            let customer = new Product("", "", 999);
+        }).toThrowError("product: Id is required,product: Name is required");
+    });
+
     it("should change name", () => {
         // Arrange
         const product = new Product("1", "Product 1", 100);
